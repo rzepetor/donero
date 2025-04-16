@@ -1,0 +1,32 @@
+<%= form_with model: @form, scope: :donation, url: donations_path, method: :post do |form| %>
+  <div class="mb-3">
+    <%= form.label :donor_name, class: "form-label" %>
+    <%= form.text_field :donor_name, class: "form-control" %>
+
+    <%= errors_for(:donor_name, form) %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :declared_amount, class: "form-label" %>
+    <%= form.text_field :declared_amount, class: "form-control" %>
+
+    <%= errors_for(:declared_amount, form) %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :message, class: "form-label" %>
+    <%= form.text_area :message, class: "form-control", rows: 5 %>
+
+    <%= errors_for(:message, form) %>
+  </div>
+
+  <div class="mb-3">
+    <%= recaptcha_tags noscript: false %>
+
+    <%= errors_for(:recaptcha, form) %>
+  </div>
+
+  <div class="d-grid">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

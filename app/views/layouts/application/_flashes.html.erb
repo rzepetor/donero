@@ -1,0 +1,5 @@
+<% if flash.keys.any? %>
+  <div class="d-flex flex-column gap-2">
+    <%= render partial: "layouts/application/flash", collection: flash.keys, as: :key %>
+  </div>
+<% end %>

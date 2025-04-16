@@ -23,6 +23,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/application/navbar" %>
+
+    <div class="container mt-3">
+      <%= render "layouts/application/flashes" %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
