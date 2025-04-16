@@ -20,6 +20,8 @@ gem "cssbundling-rails"
 gem "jbuilder"
 # Helpers for the reCAPTCHA API
 gem "recaptcha", "~> 5.19"
+# Agnostic pagination in plain ruby. It does it all. Better.
+gem "pagy", "~> 9.3", ">= 9.3.4"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"

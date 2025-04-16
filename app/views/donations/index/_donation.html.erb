@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title mb-1 d-flex justify-content-between">
+      <%= donation.donor_name %>
+
+      <small class="text-muted text-end">
+        <%= l(donation.created_at, format: :short) %>
+      </small>
+    </h5>
+    <h6 class="card-subtitle text-muted mb-2">
+      <%= number_to_currency(donation.declared_amount, unit: "XMR", format: "%n %u") %>
+    </h6>
+    <p class="card-text">
+      <%= donation.message %>
+    </p>
+  </div>
+</div>

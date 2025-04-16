@@ -1,5 +1,8 @@
 <nav class="navbar bg-body-tertiary">
   <div class="container">
     <%= link_to "Donero", root_path, class: "navbar-brand" %>
+    <%= link_to donations_path, class: "nav-link", data: { turbo_prefetch: false } do %>
+      <i class="bi bi-lock-fill fs-5"></i>
+    <% end %>
   </div>
 </nav>
