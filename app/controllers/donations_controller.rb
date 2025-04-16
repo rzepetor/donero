@@ -1,4 +1,10 @@
 class DonationsController < ApplicationController
+  skip_before_action :authenticate, only: [ :new, :create ]
+
+  def index
+    @pagy, @donations = pagy(Donation.all)
+  end
+
   def new
     @form = Donation::Create::Form.new
   end
