@@ -1,0 +1,5 @@
+<% if form.object.errors.any? %>
+  <div class="invalid-feedback d-block">
+    <%= render partial: "shared/forms/error", collection: form.object.errors.full_messages_for(field), as: :error %>
+  </div>
+<% end %>
