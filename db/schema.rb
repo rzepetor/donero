@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_16_152400) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_16_220306) do
   create_table "donations", force: :cascade do |t|
     t.string "donor_name"
-    t.decimal "declared_amount", precision: 15, scale: 12, null: false
-    t.string "message", null: false
+    t.decimal "declared_amount", precision: 15, scale: 12
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "monero_address"
   end
 end

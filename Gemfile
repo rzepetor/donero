@@ -22,6 +22,8 @@ gem "jbuilder"
 gem "recaptcha", "~> 5.19"
 # Agnostic pagination in plain ruby. It does it all. Better.
 gem "pagy", "~> 9.3", ">= 9.3.4"
+# HTTP/REST API client library.
+gem "faraday", "~> 2.13"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -69,4 +71,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # WebMock allows stubbing HTTP requests and setting expectations on HTTP requests
+  gem "webmock", "~> 3.25", ">= 3.25.1"
 end

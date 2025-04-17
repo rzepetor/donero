@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class DonationsTest < ApplicationSystemTestCase
+  include MoneroWalletRpc::TestHelper
+
   test "create donation fails with blank donor name" do
     submit_donation_form
 
@@ -52,6 +54,8 @@ class DonationsTest < ApplicationSystemTestCase
   end
 
   test "create donation successfully" do
+    stub_monero_wallet_rpc_generate_address_request
+
     submit_donation_form do
       fill_in :donation_donor_name, with: "michael"
       fill_in :donation_declared_amount, with: 1
