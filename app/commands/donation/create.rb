@@ -1,15 +1,15 @@
 class Donation::Create
   include ActiveModel::Model
 
-  attr_accessor :donor_name, :declared_amount, :message
+  attr_accessor :donor_name, :declared_amount, :message, :donation
 
   def perform
-    create_donation
+    @donation = create_donation
   end
 
   private
 
   def create_donation
-    Donation.create!(donor_name:, declared_amount:, message:)
+    Donation.create!(donor_name:, declared_amount:, message:, monero_address: MoneroWalletRpc.generate_address)
   end
 end
