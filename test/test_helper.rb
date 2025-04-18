@@ -14,5 +14,8 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def api_authorization_header(token = ENV.fetch("API_TOKEN"))
+      { "Authorization" => [ "Basic", Base64.strict_encode64("#{token}:") ].join(" ") }
+    end
   end
 end
