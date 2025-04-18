@@ -1,9 +1,9 @@
 require "test_helper"
 
-class DonationTest < ActiveSupport::TestCase
+class Donation::CreateTest < ActiveSupport::TestCase
   include MoneroWalletRpc::TestHelper
 
-  test "perform" do
+  test "successful perform" do
     stub_monero_wallet_rpc_generate_address_request
 
     assert_difference -> { Donation.count }, 1 do

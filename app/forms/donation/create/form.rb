@@ -1,10 +1,7 @@
 class Donation::Create::Form
   include ActiveModel::Model
-  include ActiveModel::Attributes
 
-  attribute :donor_name, :string
-  attribute :declared_amount, :decimal
-  attribute :message, :string
+  attr_accessor :donor_name, :declared_amount, :message
 
   validates :donor_name, presence: true, length: { maximum: 30 }
   validates :declared_amount, numericality: { greater_than: 0 }

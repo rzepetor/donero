@@ -6,11 +6,15 @@ class MoneroWalletRpc
   attr_accessor :method, :params
 
   def self.generate_address
-    new(method: :create_address).response.result.address
+    new(method: :create_address).response.address
+  end
+
+  def self.get_transfer_by_txid(txid)
+    new(method: :get_transfer_by_txid, params: { txid: txid }).response&.transfer
   end
 
   def response
-    JSON.parse(request.body, object_class: OpenStruct)
+    JSON.parse(request.body, object_class: OpenStruct).result
   end
 
   def request

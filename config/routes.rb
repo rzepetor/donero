@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   root "donations#new"
 
   resources :donations, only: [ :index, :new, :create ]
+
+  namespace :api do
+    resources :transfers, only: [ :create ]
+  end
 end
