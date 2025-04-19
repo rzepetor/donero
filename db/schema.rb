@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_18_194138) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_18_224150) do
   create_table "donations", force: :cascade do |t|
     t.string "donor_name"
     t.decimal "declared_amount", precision: 15, scale: 12
@@ -18,13 +18,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_18_194138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "monero_address"
+    t.decimal "received_amount", precision: 15, scale: 12, default: "0.0"
     t.index ["monero_address"], name: "index_donations_on_monero_address", unique: true
   end
 
   create_table "transfers", force: :cascade do |t|
     t.string "txid"
     t.string "monero_address"
-    t.decimal "amount", precision: 15, scale: 12
+    t.decimal "amount", precision: 15, scale: 12, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["txid"], name: "index_transfers_on_txid", unique: true

@@ -1,5 +1,6 @@
 one:
   donor_name: "michael"
   declared_amount: 1
+  received_amount: 1
   message: "You are the best!"
   monero_address: "72WU9FgCXZKGSxGkUTb2sG2oNKLuui1JkKwriKwD4WgdjMknAykzz4tH2nk7awCZdYGbLyxhDddMn1KZfi12YsmmVC7ikUD"

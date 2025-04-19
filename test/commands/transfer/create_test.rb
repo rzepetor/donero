@@ -2,6 +2,7 @@ require "test_helper"
 
 class Transfer::CreateTest < ActiveSupport::TestCase
   include MoneroWalletRpc::TestHelper
+  include ActiveJob::TestHelper
 
   test "transfer not created when txid taken" do
     stub_monero_wallet_rpc_get_transfer_by_txid_request
@@ -30,19 +31,22 @@ class Transfer::CreateTest < ActiveSupport::TestCase
   end
 
   test "successful perform" do
+    donation = donations(:one)
     monero_address = donations(:one).monero_address
     txid = SecureRandom.base58
 
     stub_monero_wallet_rpc_get_transfer_by_txid_request(monero_address:, amount: 1)
 
-    assert_difference -> { Transfer.count }, 1 do
-      create = Transfer::Create.new(txid:)
-      create.perform
+    assert_enqueued_with job: Donation::ProcessJob, args: [ donation ] do
+      assert_difference -> { Transfer.count }, 1 do
+        create = Transfer::Create.new(txid:)
+        create.perform
 
-      assert_empty create.errors
-      assert_equal txid, create.transfer.txid
-      assert_equal monero_address, create.transfer.monero_address
-      assert_equal 1, create.transfer.amount
+        assert_empty create.errors
+        assert_equal txid, create.transfer.txid
+        assert_equal monero_address, create.transfer.monero_address
+        assert_equal 1, create.transfer.amount
+      end
     end
   end
 end

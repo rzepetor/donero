@@ -9,6 +9,7 @@
     </h5>
     <h6 class="card-subtitle text-muted mb-2">
       <%= donation.monero_address %> <br>
+      <%= number_to_currency(donation.received_amount, unit: "XMR", format: "%n %u") %> /
       <%= number_to_currency(donation.declared_amount, unit: "XMR", format: "%n %u") %>
     </h6>
     <p class="card-text">

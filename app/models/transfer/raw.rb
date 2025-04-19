@@ -8,6 +8,8 @@ class Transfer::Raw
   alias_attribute :monero_address, :address
 
   def amount
+    return 0.0 if data.nil?
+
     data.amount / 1_000_000_000_000.0
   end
 

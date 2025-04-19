@@ -12,6 +12,7 @@ class Transfer::Create
     return if invalid?
 
     @transfer = create_transfer
+    donation.process_later
   end
 
   private
